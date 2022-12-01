@@ -30,11 +30,13 @@
 
 natural_freq = 2*pi/5; %rad/s
 csi= [0.1 0.2 0.5 0.9 1 2 4]; 
+damping_coefficient =0;
 
-for i= csi 
+for i= 1:7
+    damping_coefficient= csi (i); 
     u_gain= natural_freq^2; 
     y_gain =  natural_freq^2; 
-    y_dot_gain= 2* csi * natural_freq;
+    y_dot_gain= 2* damping_coefficient * natural_freq;
     simOut= sim ('quadrotor_control');
     
     hold on
@@ -43,7 +45,6 @@ for i= csi
     ylabel("y");
     grid on;
     box on;
-    legend on; 
     title("Example step response of a second-order LTI system")
       
 end
