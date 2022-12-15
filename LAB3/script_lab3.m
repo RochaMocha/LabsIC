@@ -14,7 +14,7 @@ Kt = 3.575*10^(-5); %N/(rad/s)^2
 Z_0 = 2; 
 Omega_0 =  sqrt((G*M)/Kt);
 U_0 = Omega_0;
+dz_r=0;
 
-%% Plots
-input = [100 1000 5000]; %rpm
-input = input *2 * pi /60; % rad/s
+s= tf(-1, [1 0 0]); %transfer function 1/(s^2)
+rlocus (s)
